@@ -38,3 +38,19 @@ for bin in bins:
     print bin;
     print str(len(bin));
     print '\n'
+
+outputText = [];
+
+print testText;
+
+for letter in testText:
+    alphaIdx = ord(letter.upper()) - ord('A');
+    print alphaIdx;
+    if len(bins[alphaIdx]) == 0:
+        outputText.append(" " + letter);
+        continue;
+    
+    outputText.append(" " + bins[alphaIdx][0][1]);
+    
+
+print outputText;
