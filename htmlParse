@@ -1,6 +1,6 @@
 from lxml import html
 import requests
-
+import string
 page = requests.get('http://www.ptable.com/')
 tree = html.fromstring(page.text)
 ptelements_a = tree.xpath('//td[re:match(@class, "Element")]//acronym/text()', namespaces={"re": "http://exslt.org/regular-expressions"});
@@ -15,3 +15,26 @@ testText = "Go Away";
 testText = testText.replace(" ", "");
 testText = [letter for letter in testText];
 print testText;
+length = -1;
+for accr in ptelements_a:
+    if len(accr) > length:
+        length = len(accr);
+
+print length;
+
+
+pt.sort();
+print pt;
+bins = [];
+for i in range(0, 26):
+    bins.append([]);
+for i in range(len(pt)):
+    t = ord(pt[i][0][0]) - ord('A');
+    bins[t].append(pt[i]);
+       
+print bins
+for bin in bins:
+    print chr(bins.index(bin) + ord('A'))
+    print bin;
+    print str(len(bin));
+    print '\n'
