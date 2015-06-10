@@ -1,0 +1,17 @@
+from lxml import html
+import requests
+
+page = requests.get('http://www.ptable.com/')
+tree = html.fromstring(page.text)
+ptelements_a = tree.xpath('//td[re:match(@class, "Element")]//acronym/text()', namespaces={"re": "http://exslt.org/regular-expressions"});
+ptelements = tree.xpath('//td[re:match(@class, "Element")]//em/text()', namespaces={"re": "http://exslt.org/regular-expressions"});
+print ptelements_a;
+print ptelements;
+pt = zip( ptelements_a, ptelements);
+for acr,ele in pt:
+    print acr + "__" + ele
+
+testText = "Go Away";
+testText = testText.replace(" ", "");
+testText = [letter for letter in testText];
+print testText;
