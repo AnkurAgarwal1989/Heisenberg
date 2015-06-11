@@ -43,14 +43,23 @@ outputText = [];
 
 print testText;
 
-for letter in testText:
-    alphaIdx = ord(letter.upper()) - ord('A');
-    print alphaIdx;
+def findInBins(letters):
+    alphaIdx = ord(letters[0].upper()) - ord('A');
     if len(bins[alphaIdx]) == 0:
-        outputText.append(" " + letter);
-        continue;
+        return None;
+        
+    for element in bins[alphaIdx]:
+        if letters in element[0]:
+            return bins[alphaIdx][bins[alphaIdx].index(element)][1];
     
-    outputText.append(" " + bins[alphaIdx][0][1]);
+    return bins[alphaIdx][0][1];
     
+        
+for i in range(len(testText)):
+    outBuff = "";
+    outBuff = findInBins(testText[i]);
+    if findInBins(testText[i]) is not None:
+        if findInBins(testText[i]+testText[i+1] is not None):
+    outputText.append(" " + findInBins(letter));
 
 print outputText;
